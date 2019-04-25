@@ -17,12 +17,26 @@
   .container {
     max-width: 600px;
     margin: 0 auto;
+    background-color:lightblue;
   }
   
+  img {
+    max-width: 40%;
+  }
+  
+  img.backdrop {
+    max-width: 80%;
+  }
+
   .error-message {
       color: red;
   }
   
   .hidden {
     display: none;
+  }
+
+  li {
+    background-color: yellow;
+    border: 3px black;
   }
