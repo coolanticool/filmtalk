@@ -7,33 +7,52 @@
     <title>media api</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <h1>media api</h1>
+<body onload="randombg()">
+<div id="random" ></div> 
+
+        
+    <div id="container">
+        <h1>phimtalk</h1>
 
         <form id="js-form">
             
-            <input type="text" name="search-term" id="js-search-term" required placeholder="search for film or tv show">
-
+            <input type="text" name="search-term" id="js-search-term" required placeholder="search for film or tv show" style="padding: 6px 6px;" >
+ 
             
 
-            <input type="submit" value="Go!">
+            <input type="submit" value="Go!" style="padding: 6px 6px;">
         </form>
 
         <p id="js-error-message" class="error-message"></p>
+
+        </div>
+<div id="contentContainer">
+<div id="movieContainer" class="hidden">
         <section id="results" class="hidden">
           <h2>Search results</h2>
           <ul id="results-list">
           </ul>
         </section>
+</div>
 
+<div id="arrow" class="hidden">
+                <span></span>
+                <span></span>
+                <span></span>
+  
+</div>
+
+<div id="reviewContainer" class="hidden">
         <section id="resultsYt" class="hidden">
             <h2>Video results</h2>
             <ul id="resultsYt-list">
             </ul>
           </section>
-    </div>
+   </div>
+   
+   </div>
     <script src="index.js"></script>
 </body>
 </html>

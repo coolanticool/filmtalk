@@ -41,18 +41,18 @@ function displayResults(responseJson) {
   for (let i=0; i<responseJson.results.length; i++) {
    
         $('#results-list').append(`
-          <li><h3>${responseJson.results[i].title}</h3>
-          <a href=https://image.tmdb.org/t/p/original/${responseJson.results[i].poster_path}>
-          <img src=https://image.tmdb.org/t/p/original/${responseJson.results[i].poster_path} ></a>
-        <a href=https://image.tmdb.org/t/p/original/${responseJson.results[i].backdrop_path}>
-        <img class='backdrop' src=https://image.tmdb.org/t/p/original/${responseJson.results[i].backdrop_path}></a>
-          <p>${responseJson.results[i].overview}</p>
-          <p>Release date: ${responseJson.results[i].release_date}</p>
-          </li>
-          `)
-      };
+          <li><h3>${responseJson.results[i].title}</h3>  
+          <a href='https://image.tmdb.org/t/p/original/${responseJson.results[i].backdrop_path}'target="_blank">
+          <img class='backdrop' src=https://image.tmdb.org/t/p/original/${responseJson.results[i].poster_path}></a>
+     
+         <p>${responseJson.results[i].overview}</p>
+         <p>Release date: ${responseJson.results[i].release_date}</p>
+         </li>
+         `)
+     };
   //display the results section  
   $('#results').removeClass('hidden');
+  $('#arrow').removeClass('hidden');
 };
 
 function getResults (query) {
@@ -104,8 +104,12 @@ function displayResultsYt(responseJson) {
     $('#resultsYt-list').append(
       `<li><h3>${responseJson.items[j].snippet.title}</h3>
       <p>${responseJson.items[j].snippet.description}</p>
-      <a href='https://www.youtube.com/watch?v=${responseJson.items[j].id.videoId}'><img src='${responseJson.items[j].snippet.thumbnails.default.url}'></a>
-      <iframe width="420" height="345" src='https://www.youtube.com/embed/${responseJson.items[j].id.videoId}'><img src='${responseJson.items[j].snippet.thumbnails.default.url}'></iframe>
+      
+      <iframe width="420" height="345" src='https://www.youtube.com/embed/${responseJson.items[j].id.videoId}'allowfullscreen="allowfullscreen"
+        mozallowfullscreen="mozallowfullscreen" 
+        msallowfullscreen="msallowfullscreen" 
+        oallowfullscreen="oallowfullscreen" 
+        webkitallowfullscreen="webkitallowfullscreen"><img src='${responseJson.items[j].snippet.thumbnails.default.url}'></iframe>
       </li>`)
   };
 
@@ -113,6 +117,8 @@ function displayResultsYt(responseJson) {
 
 //display the results section  
 $('#resultsYt').removeClass('hidden');
+$('#movieContainer').removeClass('hidden');
+$('#reviewContainer').removeClass('hidden');
 };
 
 
@@ -149,6 +155,18 @@ function getYoutubeVideos (query /*maxResults=10*/) {
 
 }
 
+function randombg(){
+  var random= Math.floor(Math.random() * 6) + 0;
+  var bigSize = ["url(http://www.tasteofcinema.com/wp-content/uploads/2013/12/Stranger-Than-Paradise.jpg)",
+                 "url('http://3.bp.blogspot.com/-dcJTxw2skRY/VizQgOj0jQI/AAAAAAAADQI/cZMEHJqybFY/s1600/1.In-the-Mood-for-Love-Film-Still.jpg')",
+                 "url('https://i.pinimg.com/originals/e1/8e/f1/e18ef1ba6c65a60adb3a08b980794889.jpg')",
+                 "url('https://cdn-images-1.medium.com/max/2600/1*iV9lDoH8Zsu21bxRURps1Q.jpeg')",
+                 "url('https://66.media.tumblr.com/2d871c3a7a2d7471d6fbbeedd63afca6/tumblr_nrtpfsJeX01t7tt05o1_1280.png')",
+                 "url('https://cdn-images-1.medium.com/max/2400/1*b1i2IlnurdEdXPWF1SBiKA.jpeg')"];
+  document.getElementById("random").style.backgroundImage=bigSize[random];
+}
+
+
 
 
 function watchForm() {
@@ -159,6 +177,9 @@ function watchForm() {
     getResults(searchTerm);
     getYoutubeVideos (searchTerm);
   });
+
+
+
 }
 
 $(watchForm);
